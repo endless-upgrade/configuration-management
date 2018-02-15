@@ -1,0 +1,10 @@
+---
+# tasks file for staging-ci-server
+
+- name: Install DevOps Worker components
+  include_role:
+    name: devops-worker
+
+- name: Install CI-server components
+  include_role:
+    name: ci-server

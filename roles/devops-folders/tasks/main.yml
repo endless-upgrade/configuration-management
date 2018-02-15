@@ -1,0 +1,34 @@
+---
+# tasks file for devops-folders
+
+- name: Create config folder
+  file:
+    path: /opt/conf
+    owner: root
+    group: root
+    mode: 0644
+    state: directory
+
+- name: Create model folder
+  file:
+    path: /opt/devops_proc/model
+    owner: root
+    group: root
+    mode: 0644
+    state: directory
+
+- name: Ensure Export file exists
+  copy:
+    content: ""
+    dest: /etc/profile.d/exports.sh
+    force: no
+    group: root
+    owner: root
+    mode: 0555
+
+- name: Export Devops conf dir
+  lineinfile:
+    path: /etc/profile.d/exports.sh
+    state: present
+    insertafter: EOF
+    line: 'export DEVOPS_CONF_DIR=/opt/conf'

@@ -1,0 +1,62 @@
+---
+# tasks file for ci-server
+
+- name: Install sbt
+  include_role:
+    name: sbt
+
+- name: Install spark
+  include_role:
+    name: spark
+
+- name: Install Jenkins Blue Ocean
+  include_role:
+    name: jenkins
+
+- name: Create config folder
+  file:
+    path: /opt/conf
+    owner: jenkins
+    group: jenkins
+    mode: 0644
+    state: directory
+
+- name: Create model folder
+  file:
+    path: /opt/devops_proc/model
+    owner: jenkins
+    group: jenkins
+    mode: 0644
+    state: directory
+
+- name: Create depoy realtimeETL
+  file:
+    path: /opt/deploy/realtime_etl
+    owner: jenkins
+    group: jenkins
+    mode: 0644
+    state: directory
+
+- name: Create depoy batchETL
+  file:
+    path: /opt/deploy/batch_etl
+    owner: jenkins
+    group: jenkins
+    mode: 0644
+    state: directory
+
+- name: Create depoy realtimeML
+  file:
+    path: /opt/deploy/realtime_ml
+    owner: jenkins
+    group: jenkins
+    mode: 0644
+    state: directory
+
+- name: Create depoy batchML
+  file:
+    path: /opt/deploy/batch_ml
+    owner: jenkins
+    group: jenkins
+    mode: 0644
+    state: directory

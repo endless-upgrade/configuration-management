@@ -1,0 +1,11 @@
+[Unit]
+Description=Kafka JDBC Connector sensing movielens database
+After=network.target
+
+[Service]
+User=root
+ExecStart=confluent start schema-registry
+ExecStop=confluent stop
+
+[Install]
+WantedBy=default.target
