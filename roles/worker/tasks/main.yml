@@ -12,18 +12,17 @@
 - name: Set hive-site.xml
   copy:
     #src: hive-site.xml
-    content: |
-    <?xml version="1.0" encoding="UTF-8"?>
+    content: '<?xml version="1.0" encoding="UTF-8"?>
     <configuration>
       <property>
         <name>hive.metastore.uris</name>
-        <value>thrift://{{ thrift-server }}:9083</value>
+        <value>thrift://{{ SERVERNAME }}:9083</value>
       </property>
       <property>
         <name>dfs.client.use.datanode.hostname</name>
         <value>true</value>
       </property>
-    </configuration>
+    </configuration>'
     dest: /opt/spark-2.2.0-bin-hadoop2.7/conf/hive-site.xml
     owner: root
     group: root
