@@ -1,5 +1,0 @@
-scrape_configs:
-  - job_name: "node"
-    scrape_interval: "10s"
-    static_configs:
-    - targets: ['localhost:9100', 'localhost:9091', 'devops-worker:9100', 'devops-worker:9091']
