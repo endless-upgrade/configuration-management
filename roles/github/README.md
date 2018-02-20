@@ -1,7 +1,16 @@
-Role Name
+GitHub
 =========
 
-A brief description of the role goes here.
+To make a pull request
+```bash
+git checkout -b <nomeNuovoBranch>
+# Do some stuff
+git add --all
+git commit -m "commit message"
+git push
+# Create a pull request with the last commit message
+git pull-request -m "$(git log -1 --pretty=%B)"
+```
 
 Requirements
 ------------
