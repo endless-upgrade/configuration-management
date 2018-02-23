@@ -1,5 +1,4 @@
 ---
-
 - name: disable SELINUX
   lineinfile:
     path: /etc/selinux/config
@@ -17,9 +16,7 @@
     enabled: no
   ignore_errors: yes
   with_items:
-    #- cups
     - postfix
-
 
 - name: Disable paging and memory swapping
   lineinfile:
@@ -28,7 +25,6 @@
   with_items:
     - echo never > /sys/kernel/mm/redhat_transparent_hugepage/defrag
     - echo never > /sys/kernel/mm/redhat_transparent_hugepage/enabled
-
 
 - name: Make rc.local runnable
   file:
@@ -40,7 +36,6 @@
   service:
     name: firewalld
     state: stopped
-
 
 - name: Disable firewalld
   service:

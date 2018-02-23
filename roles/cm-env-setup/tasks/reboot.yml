@@ -1,10 +1,12 @@
 ---
 
 - name: Manual stop instance
-  local_action: shell gcloud compute instances stop {{ inventory_hostname }} --zone=us-east1-b
+  local_action: shell gcloud compute 
+   instances stop {{ inventory_hostname }} --zone=us-east1-b
 
 - name: Manual start instance
-  local_action: shell gcloud compute instances start {{ inventory_hostname }} --zone=us-east1-b
+  local_action: shell gcloud compute 
+   instances start {{ inventory_hostname }} --zone=us-east1-b
 
 - name: Wait for machine to restart
   local_action:

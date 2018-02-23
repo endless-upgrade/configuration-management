@@ -1,6 +1,5 @@
 ---
 # tasks file for cloudera
-
 - name: Config Environment
   include_role: 
     name: cm-env-setup
@@ -20,8 +19,11 @@
 - name: Wait for cloudera to start up before proceeding.
   shell: "curl -D - --silent --max-time 5 http://localhost:7180/cmf"
   register: result
-  until: (result.stdout.find("403 Forbidden") != -1) or (result.stdout.find("200 OK") != -1) and (result.stdout.find("Please wait while") == -1)
+  until: (result.stdout.find("403 Forbidden") != -1) or
+   (result.stdout.find("200 OK") != -1) and 
+   (result.stdout.find("Please wait while") == -1)
   retries: "60"
   delay: "10"
   changed_when: false
   check_mode: no
+
