@@ -9,7 +9,7 @@
 
 - name: Make sure terraform home dir exists
   file:
-    path: /etc/terraform
+    path: /opt/terraform
     state: directory
     mode: 0755
 
