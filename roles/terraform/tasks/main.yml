@@ -44,7 +44,7 @@
     path: /etc/profile.d/exports.sh
     state: present
     insertafter: EOF
-    line: 'export PATH=$PATH:$$TERRAFORM_HOME'
+    line: 'export PATH=$PATH:$TERRAFORM_HOME'
 
 - name: Source evn variables
   shell: /etc/profile.d/exports.sh
