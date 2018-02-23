@@ -1,3 +1,3 @@
 #!/bin/bash
-ansible-playbook -i ./hosts --connection=local $1 -e 'host_key_checking=False' --extra-vars "thrift-server=$2"
+ansible-playbook -i ./hosts --connection=local $1 -e 'host_key_checking=False' --extra-vars "SERVERNAME=$2"
 
