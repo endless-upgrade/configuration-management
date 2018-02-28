@@ -1,0 +1,39 @@
+# ===============
+# RUN MODULE
+# ===============
+
+# run module local, target via hosts file
+ansible -i ./hosts --connection=local local -m MODULE -e 'host_key_checking=False'
+
+# run module, target via hosts file
+ansible -i ./hosts LABEL -m MODULE -e 'host_key_checking=False'
+
+# run module remote, target via ip list
+ansible -i 'host1,' all -m MODULE -e 'host_key_checking=False'
+
+# ===============
+# RUN PLAYBOOK
+# ===============
+
+# run playbook local, target via hosts file
+ansible-playbook -i ./hosts --connection=local PLAYBOOK -e 'host_key_checking=False'
+
+# run playbook, target via hosts file
+ansible-playbook -i ./hosts playbook.yml -e 'host_key_checking=False'
+
+# run playbook, target via ip list
+ansible-playbook -i 'host1,' playbook.yml -e 'host_key_checking=False'
+
+# ===============
+# OPTIONS
+# ===============
+
+# SSH RSA private key
+--private-key=/home/user/.ssh/key
+
+# remote user to connect via SSH
+-e 'ansible_ssh_user=remoteuser'
+
+# extra vars to parametrize playbook/role
+--extra-vars "VAR1=val1 VAR2=val2"
+
