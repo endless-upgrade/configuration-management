@@ -6,10 +6,11 @@
 ansible -i ./hosts --connection=local local -m MODULE -e 'host_key_checking=False'
 
 # run module, target via hosts file
-ansible -i ./hosts LABEL -m MODULE -e 'host_key_checking=False'
+ansible -i ./hosts LABEL -m MODULE -e 'host_key_checking=False' --private-key=/home/user/.ssh/key -e 'ansible_ssh_user=remoteuser'
 
 # run module remote, target via ip list
-ansible -i 'host1,' all -m MODULE -e 'host_key_checking=False'
+ansible -i 'host1,' all -m MODULE -e 'host_key_checking=False' --private-key=/home/user/.ssh/key -e 'ansible_ssh_user=remoteuser'
+
 
 # ===============
 # RUN PLAYBOOK
@@ -19,10 +20,10 @@ ansible -i 'host1,' all -m MODULE -e 'host_key_checking=False'
 ansible-playbook -i ./hosts --connection=local PLAYBOOK -e 'host_key_checking=False'
 
 # run playbook, target via hosts file
-ansible-playbook -i ./hosts playbook.yml -e 'host_key_checking=False'
+ansible-playbook -i ./hosts playbook.yml -e 'host_key_checking=False' --private-key=/home/user/.ssh/key -e 'ansible_ssh_user=remoteuser'
 
 # run playbook, target via ip list
-ansible-playbook -i 'host1,' playbook.yml -e 'host_key_checking=False'
+ansible-playbook -i 'host1,' playbook.yml -e 'host_key_checking=False' --private-key=/home/user/.ssh/key -e 'ansible_ssh_user=remoteuser'
 
 # ===============
 # OPTIONS
